@@ -6,12 +6,11 @@ import getCroppedImageUrl from "../utils/optimizeImage";
 
 interface Props {
   game: Game;
-  cardWidth: string;
 }
 
-const GameCard = ({ game, cardWidth }: Props) => {
+const GameCard = ({ game }: Props) => {
   return (
-    <Card borderRadius={15} overflow="hidden" width={cardWidth}>
+    <Card>
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
