@@ -11,6 +11,7 @@ const NavBar = () => {
         width="100px"
         margin="2"
         borderRadius="base"
+        marginLeft={3}
       />
       <ColorModeSwitch />
     </HStack>
