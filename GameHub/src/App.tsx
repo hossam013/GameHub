@@ -28,7 +28,7 @@ function App() {
         }}
         templateColumns={{
           base: "1fr",
-          lg: "230px 1fr",
+          lg: "200px 1fr",
         }}
       >
         <GridItem area="nav">
@@ -39,7 +39,7 @@ function App() {
           />
         </GridItem>
         <Show above="lg">
-          <GridItem area="aside" paddingX={5}>
+          <GridItem area="aside" paddingX={3}>
             <GenreList
               onSelectGenre={(selectedGenre) =>
                 setGameQuery({ ...gameQuery, genre: selectedGenre })

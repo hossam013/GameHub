@@ -1,6 +1,8 @@
 import {
+  Box,
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -25,9 +27,12 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   const { colorMode } = useColorMode();
 
+  if (error) return null;
   return (
-    <>
-      {error && <Text>{error}</Text>}
+    <Box marginTop={5}>
+      <Heading fontSize="2xl" marginBottom={2}>
+        Genres
+      </Heading>
       <List>
         {isLoading &&
           skeletons.map((skeleton) => (
@@ -42,8 +47,11 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                 src={getCroppedImageUrl(genre.image_background)}
                 boxSize="32px"
                 borderRadius={8}
+                objectFit="cover"
               />
               <Button
+                whiteSpace="normal"
+                textAlign="left"
                 fontSize="md"
                 variant="link"
                 onClick={() => onSelectGenre(genre)}
@@ -56,7 +64,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                   {genre.name.length < 12
                     ? genre.name
                     : genre.id !== selectedGenre?.id
-                    ? genre.name.slice(0, 12) + ".."
+                    ? genre.name.slice(0, 15) + ".."
                     : genre.name}
                 </Text>
               </Button>
@@ -64,7 +72,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
           </ListItem>
         ))}
       </List>
-    </>
+    </Box>
   );
 };
 
