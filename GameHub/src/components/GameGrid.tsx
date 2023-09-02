@@ -36,7 +36,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
           spacing={6}
-          // padding={5}
+          padding={5}
         >
           {games?.pages.map((page, index) => (
             <React.Fragment key={index}>

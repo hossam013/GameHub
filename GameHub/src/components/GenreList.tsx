@@ -17,10 +17,10 @@ import theme from "../Theme";
 
 interface Props {
   onSelectGenre: (selectedGenre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const { data: genres, error, isLoading } = useGenres();
 
   const skeletons = Array.from(Array(15).keys());
@@ -55,7 +55,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                 fontSize="md"
                 variant="link"
                 onClick={() => onSelectGenre(genre)}
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 color={colorMode === "light" ? "blackAlpha.900" : ""}
               >
                 <Text
@@ -63,7 +63,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                 >
                   {genre.name.length < 12
                     ? genre.name
-                    : genre.id !== selectedGenre?.id
+                    : genre.id !== selectedGenreId
                     ? genre.name.slice(0, 15) + ".."
                     : genre.name}
                 </Text>
