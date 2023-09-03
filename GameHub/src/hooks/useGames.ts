@@ -3,6 +3,7 @@ import { GameQuary } from "../App";
 import { APIClient } from "../services/api-client";
 import { FetchResponse } from "../services/api-client";
 import { Platform } from "./usePlatforms";
+import ms from "ms";
 
 export interface Game {
   id: number;
@@ -27,7 +28,7 @@ const useGames = (gameQuery: GameQuary) =>
           page: pageParam,
         },
       }),
-    staleTime: 24 * 60 * 60 * 1000,
+    staleTime: ms("24h"),
     getNextPageParam: (lastPage, allPages) =>
       lastPage.next ? allPages.length + 1 : undefined,
   });
