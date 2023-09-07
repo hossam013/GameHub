@@ -9,19 +9,19 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
-import getCroppedImageUrl from "../utils/optimizeImage";
-import GenreSkeleton from "./GenreSkeleton";
-import GenreCardContainer from "./GenreCardContainer";
 import theme from "../Theme";
+import useGameQueryStore from "../gameQuaryStore";
+import useGenres from "../hooks/useGenres";
+import getCroppedImageUrl from "../utils/optimizeImage";
+import GenreCardContainer from "./GenreCardContainer";
+import GenreSkeleton from "./GenreSkeleton";
 
-interface Props {
-  onSelectGenre: (selectedGenre: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
   const { data: genres, error, isLoading } = useGenres();
+
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+
+  const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
 
   const skeletons = Array.from(Array(15).keys());
 
@@ -54,8 +54,8 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                 textAlign="left"
                 fontSize="md"
                 variant="link"
-                onClick={() => onSelectGenre(genre)}
-                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
+                onClick={() => setGenreId(genre.id)}
+                fontWeight={genre.id === genreId ? "bold" : "normal"}
                 color={colorMode === "light" ? "blackAlpha.900" : ""}
               >
                 <Text
@@ -63,7 +63,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                 >
                   {genre.name.length < 12
                     ? genre.name
-                    : genre.id !== selectedGenreId
+                    : genre.id !== genreId
                     ? genre.name.slice(0, 15) + ".."
                     : genre.name}
                 </Text>
