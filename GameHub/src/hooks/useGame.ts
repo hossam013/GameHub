@@ -1,17 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
-import { useParams } from "react-router-dom";
 import { APIClient } from "../services/api-client";
-import { Game } from "./useGames";
+import { Game } from "../entities/Game";
 
 const apiClient = new APIClient<Game>(`/games`);
 
-const useGame = () => {
-  const { slug } = useParams();
-
+const useGame = (slug: string) => {
   return useQuery({
     queryKey: ["game", slug],
-    queryFn: () => apiClient.get(slug!),
+    queryFn: () => apiClient.get(slug),
     staleTime: ms("24h"),
   });
 };

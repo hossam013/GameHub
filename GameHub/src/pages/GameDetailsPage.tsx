@@ -1,8 +1,11 @@
 import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
 import useGame from "../hooks/useGame";
+import { useParams } from "react-router-dom";
 
 const GameDetailsPage = () => {
-  const { data: game, isLoading, error } = useGame();
+  const { slug } = useParams();
+
+  const { data: game, isLoading, error } = useGame(slug!);
 
   if (isLoading) return <Spinner />;
   if (error) throw error;
