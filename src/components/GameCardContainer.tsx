@@ -14,6 +14,7 @@ const GameCardContainer = ({ children }: Props) => {
         transform: "scale(1.04)",
         transition: "transform .15s ease-in",
       }}
+      boxShadow="xl"
     >
       {children}
     </Box>

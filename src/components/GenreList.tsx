@@ -42,33 +42,35 @@ const GenreList = () => {
           ))}
         {genres?.results.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
-            <HStack>
-              <Image
-                src={getCroppedImageUrl(genre.image_background)}
-                boxSize="32px"
-                borderRadius={8}
-                objectFit="cover"
-              />
-              <Button
-                whiteSpace="normal"
-                textAlign="left"
-                fontSize="md"
-                variant="link"
-                onClick={() => setGenreId(genre.id)}
-                fontWeight={genre.id === genreId ? "bold" : "normal"}
-                color={colorMode === "light" ? "blackAlpha.900" : ""}
-              >
-                <Text
-                  color={theme.config.initialColorMode === "dark" ? "" : ""}
+            <Box boxShadow={genre.id === genreId ? "lg" : ""} rounded={10}>
+              <HStack>
+                <Image
+                  src={getCroppedImageUrl(genre.image_background)}
+                  boxSize="32px"
+                  borderRadius={8}
+                  objectFit="cover"
+                />
+                <Button
+                  whiteSpace="normal"
+                  textAlign="left"
+                  fontSize="md"
+                  variant="link"
+                  onClick={() => setGenreId(genre.id)}
+                  fontWeight={genre.id === genreId ? "bold" : "normal"}
+                  color={colorMode === "light" ? "blackAlpha.900" : ""}
                 >
-                  {genre.name.length < 12
-                    ? genre.name
-                    : genre.id !== genreId
-                    ? genre.name.slice(0, 15) + ".."
-                    : genre.name}
-                </Text>
-              </Button>
-            </HStack>
+                  <Text
+                    color={theme.config.initialColorMode === "dark" ? "" : ""}
+                  >
+                    {genre.name.length < 12
+                      ? genre.name
+                      : genre.id !== genreId
+                      ? genre.name.slice(0, 15) + ".."
+                      : genre.name}
+                  </Text>
+                </Button>
+              </HStack>
+            </Box>
           </ListItem>
         ))}
       </List>

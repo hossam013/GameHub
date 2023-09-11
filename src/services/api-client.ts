@@ -4,7 +4,7 @@ import { FetchResponse } from "../entities/FetchResponse";
 export const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
-    key: "f5f19b4ec0b6490e8c6676d539fdf9c7",
+    key: import.meta.env.VITE_API_KEY,
   },
 });
 

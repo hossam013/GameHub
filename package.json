@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "start": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js start",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -23,10 +24,13 @@
     "react-icons": "^4.10.1",
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^6.10.0",
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.1.6",
     "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@types/ms": "^0.7.31",
+    "@types/node": "^20.6.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -35,7 +39,11 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "react-error-overlay": "^6.0.9",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "overrides": {
+    "typescript": "^5.0.2"
   }
 }
